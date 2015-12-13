@@ -1,4 +1,4 @@
-from download import DropboxDownloader
+from DropboxDownloader import DropboxDownloader
 
 # Initialise the object and give it the folder to store its downloads in
 d = DropboxDownloader('/Users/robin/ThesisFilesDropboxLog')
