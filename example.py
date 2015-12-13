@@ -1,4 +1,4 @@
 from download import DropboxDownloader
 
-d = DropboxDownloader('C:\Test')
-d.download_history_for_files("C:\Dropbox\Dropbox\_PhD\_FinalThesis", "*.tex", "C:\Dropbox\Dropbox")
+d = DropboxDownloader('/Users/robin/ThesisFilesDropboxLog')
+d.download_history_for_files("/Users/robin/Dropbox/_PhD/_FinalThesis", "*.tex", "/Users/robin/Dropbox/")

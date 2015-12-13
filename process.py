@@ -11,7 +11,7 @@ def do_count(globstring):
     results = []
 
     for f in files:
-        print f
+        print(f)
         try:
             res = int(Popen(
                 [r'C:\Perl64\bin\wperl.exe', r'C:\Program Files\MiKTeX 2.9\scripts\texcount\perl\texcount.pl', '-brief',
@@ -24,8 +24,8 @@ def do_count(globstring):
         timestr = splitted[4]
         timestr = timestr[:2] + ":" + timestr[2:4] + ":" + timestr[4:]
 
-        print datestr
-        print timestr
+        print(datestr)
+        print(timestr)
 
         results.append({'timestamp': parse(datestr + " " + timestr),
                         'wordcount': res})

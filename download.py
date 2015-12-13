@@ -20,15 +20,15 @@ class DropboxDownloader:
         auth_flow = DropboxOAuth2FlowNoRedirect("cmru2e8mi7ikbbf", "21417x86w06gpdh")
 
         authorize_url = auth_flow.start()
-        print "1. Go to: " + authorize_url
-        print "2. Click \"Allow\" (you might have to log in first)."
-        print "3. Copy the authorization code."
-        auth_code = raw_input("Enter the authorization code here: ").strip()
+        print("1. Go to: " + authorize_url)
+        print("2. Click \"Allow\" (you might have to log in first).")
+        print("3. Copy the authorization code.")
+        auth_code = input("Enter the authorization code here: ").strip()
 
         try:
             access_token, user_id = auth_flow.finish(auth_code)
-        except dbrest.ErrorResponse, e:
-            print('Error: %s' % (e,))
+        except dbrest.ErrorResponse as e:
+            print(('Error: %s' % (e,)))
             return None
 
         self.c = DropboxClient(access_token)
@@ -60,7 +60,7 @@ class DropboxDownloader:
         revs = self.c.revisions(filename)
 
         for rev in revs:
-            print rev
+            print(rev)
             revision_id = rev['rev']
             mod_time = rev['client_mtime'].replace(" ", "_").replace(":", "").replace("+", "").replace(',', '')
 
@@ -84,7 +84,7 @@ class DropboxDownloader:
 
                 outfile.close()
             else:
-                print "Already done, skipping"
+                print("Already done, skipping")
 
     def download_history_for_files(self, folder, globstring, dropbox_location, recursive=True):
         """
@@ -100,8 +100,8 @@ class DropboxDownloader:
         else:
             files = glob(folder + globstring)
 
-        print files
+        print(files)
         for f in files:
-            print f
+            print(f)
             dropboxpath = os.path.relpath(f, dropbox_location).replace("\\", "/")
             self.download_revisions(dropboxpath)
